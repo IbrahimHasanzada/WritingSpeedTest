@@ -27,7 +27,6 @@ function writeTest(arr) {
  let y = 30
  function a() {
    const newFunction = (e) => {
-    console.log(e);
      if (e.key === kod[0]) {
        if(kod[0] === ' '){
          x++
