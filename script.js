@@ -27,6 +27,7 @@ function writeTest(arr) {
  let y = 30
  function a() {
    const newFunction = (e) => {
+    console.log(e);
      if (e.key === kod[0]) {
        if(kod[0] === ' '){
          x++
@@ -34,7 +35,7 @@ function writeTest(arr) {
         trueWords.innerHTML = x
         kod = kod.substring(1);
         deyer.innerHTML = kod;
-      } else if(e.key != `Tab` && e.key != "CapsLock" ) {
+      } else{
         stil.classList.add('move-animation');
         setTimeout(() => {
           stil.classList.remove('move-animation');
@@ -43,14 +44,14 @@ function writeTest(arr) {
       
     }
     
-    window.addEventListener('keyup', newFunction)
+    window.addEventListener('keypress', newFunction)
     
     
     const interval =  setInterval( () => {
       y--
       if (y <= 0) {
         clearInterval(interval)
-        window.removeEventListener('keyup', newFunction) 
+        window.removeEventListener('keypress', newFunction) 
       }
       second.innerHTML = y
     }, 1000)
