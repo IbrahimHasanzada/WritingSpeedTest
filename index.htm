@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Writing speed test</title>
+        <style>
+            body{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+            #parent{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            #stil{
+                width: 600px;
+                height: 200px;
+                background-color: black;
+                border: 2px solid white;
+                overflow: hidden;
+                padding: 0 10px 0 10px;
+                transition: all .5s;
+            }
+            #stil p{
+                color: white;
+            }
+            .move-animation {
+            animation-name: move;
+            animation-duration: 0.2s;
+            animation-direction: alternate;
+            animation-iteration-count: 1;
+            }
+
+            @keyframes move {
+            0% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(20px);
+            }
+            100% {
+                transform: translateX(0);
+            }
+            }
+            #second{
+                display: table;
+                padding: 30px;
+                background-color: #F6F6F7;
+                border-radius: 20px;
+                border: 2px solid #333;
+            }
+            #true{
+                display: table;
+                padding: 30px;
+                background-color: #F6F6F7;
+                border-radius: 20px;
+                border: 2px solid #333;
+            }
+
+        </style>
+        <body>
+        
+            <div id="parent">
+                <p id="second"></p>
+            <div id="stil">
+                <p id="deyer"></p>
+            </div>
+            <p id="true"></p>
+            </div>
+          
+        <script src="script.js"></script>
+    </body>
+</html>
