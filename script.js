@@ -18,48 +18,46 @@ const timeMicSec = document.getElementById('timemicsec');
 const timeSec = document.getElementById('timesec');
 const timeMin = document.getElementById('timemin');
 const btn = document.querySelectorAll(".btn")
-let kod = '';
 let letter = '';
 let resultPoint = ''
 let x = 0;
-let y = 15;
+let time = 15;
 let count = 0;
 let intervalStarted = false;
 let interval;
-second.innerHTML = y;
+second.innerHTML = time;
 
 timeMicSec.onclick = () => {
   for (let i = 0; i < btn.length; i++) btn[i].classList.remove("addBtn")
   timeMicSec.classList.add("addBtn")
   if (!intervalStarted) {
-    y = 15;
-    second.innerHTML = y;
+    time = 15;
+    second.innerHTML = time;
   }
 };
 timeSec.onclick = () => {
   for (let i = 0; i < btn.length; i++) btn[i].classList.remove("addBtn")
   timeSec.classList.add("addBtn")
   if (!intervalStarted) {
-    y = 30;
-    second.innerHTML = y;
+    time = 30;
+    second.innerHTML = time;
   }
 };
 timeMin.onclick = () => {
   for (let i = 0; i < btn.length; i++) btn[i].classList.remove("addBtn")
   timeMin.classList.add("addBtn")
   if (!intervalStarted) {
-    y = 60;
-    second.innerHTML = y;
+    time = 60;
+    second.innerHTML = time;
   }
 };
 
-console.log(img);
 //  G E T   D A T A 
 function writeTest(arr) {
   const shuffledQuotes = [...arr];
   shuffle(shuffledQuotes);
-  shuffledQuotes.map(item => kod += item + ' ');
-  deyer.innerHTML = kod;
+  shuffledQuotes.map(item => letter += item + ' ');
+  deyer.innerHTML = letter;
 }
 
 //  S H U F F L E   Q U O T E S 
@@ -76,41 +74,43 @@ function checkFunction(e) {
   if (!intervalStarted) {
     intervalStarted = true;
     interval = setInterval(() => {
-      y--
-      second.innerHTML = y;
-      item(y)
+      time--;
+      second.innerHTML = time;
+      timeOut(time);
     }, 1000);
   }
-  
 
+  const input = e.key || e.data;
   //  W R I T I N G   C O N T R O L  
-  if (e.key === kod[0]) {
-    (kod[0] === ' ') ? x++ : 
-    (x <= 15) ? count = 0 : (x <= 30) ? count = 1 : count = 2
-    trueWords.innerHTML = 'Correct words: ' + x
-    kod = kod.substring(1);
-    deyer.innerHTML = `<span style="color:#646669;">${kod[0]}</span>${kod.slice(1)}`;
+  if (input === letter[0]) {
+    (letter[0] === ' ') ? x++ : 
+    (x <= 15) ? count = 0 : (x <= 30) ? count = 1 : count = 2;
+    trueWords.innerHTML = 'Correct words: ' + x;
+    letter = letter.substring(1);
+    deyer.innerHTML = `<span style="color:#646669;">${letter[0]}</span>${letter.slice(1)}`;
   } else {
-    deyer.innerHTML = `<span style="color:#E2B714;">${kod[0]}</span>${kod.slice(1)}`;
+    deyer.innerHTML = `<span style="color:#E2B714;">${letter[0]}</span>${letter.slice(1)}`;
     stil.classList.add('move-animation');
-    setTimeout(() => { stil.classList.remove('move-animation') }, 300);
+    setTimeout(() => { stil.classList.remove('move-animation'); }, 300);
   }
 }
-window.addEventListener('keypress', checkFunction);
 
-  //  T I M E   O U T   C O N T R O L
-function item(y) {
-  if (y === 0) {
-    clearInterval(interval)
-    window.removeEventListener('keypress', checkFunction)
+window.addEventListener('keypress', checkFunction);
+window.addEventListener('input', checkFunction);  
+
+//  T I M E   O U T   C O N T R O L
+function timeOut(time) {
+  if (time === 0) {
+    clearInterval(interval);
+    window.removeEventListener('keypress', checkFunction);
+    window.removeEventListener('input', checkFunction);
     //  O U T   O F   T I M E   R E S U L T S   
     stil.innerHTML = `
         <div id="result">
-                    <div id="image">
-                        <img src="img/${img[count]}" alt="">
-                    </div>
-                    <h2>${txt[count]}</h2>
-                </div>`
-              }
+          <div id="image">
+            <img src="img/${img[count]}" alt="">
+          </div>
+          <h2>${txt[count]}</h2>
+        </div>`;
+  }
 }
-item()
