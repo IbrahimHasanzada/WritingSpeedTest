@@ -74,43 +74,41 @@ function checkFunction(e) {
   if (!intervalStarted) {
     intervalStarted = true;
     interval = setInterval(() => {
-      time--;
+      time--
       second.innerHTML = time;
-      timeOut(time);
+      timeOut(time)
     }, 1000);
   }
+  
 
-  const input = e.key || e.data;
   //  W R I T I N G   C O N T R O L  
-  if (input === letter[0]) {
+  if (e.key === letter[0]) {
     (letter[0] === ' ') ? x++ : 
-    (x <= 15) ? count = 0 : (x <= 30) ? count = 1 : count = 2;
-    trueWords.innerHTML = 'Correct words: ' + x;
+    (x <= 15) ? count = 0 : (x <= 30) ? count = 1 : count = 2
+    trueWords.innerHTML = 'Correct words: ' + x
     letter = letter.substring(1);
     deyer.innerHTML = `<span style="color:#646669;">${letter[0]}</span>${letter.slice(1)}`;
   } else {
     deyer.innerHTML = `<span style="color:#E2B714;">${letter[0]}</span>${letter.slice(1)}`;
     stil.classList.add('move-animation');
-    setTimeout(() => { stil.classList.remove('move-animation'); }, 300);
+    setTimeout(() => { stil.classList.remove('move-animation') }, 300);
   }
 }
-
 window.addEventListener('keypress', checkFunction);
-window.addEventListener('input', checkFunction);  
 
-//  T I M E   O U T   C O N T R O L
+  //  T I M E   O U T   C O N T R O L
 function timeOut(time) {
   if (time === 0) {
-    clearInterval(interval);
-    window.removeEventListener('keypress', checkFunction);
-    window.removeEventListener('input', checkFunction);
+    clearInterval(interval)
+    window.removeEventListener('keypress', checkFunction)
     //  O U T   O F   T I M E   R E S U L T S   
     stil.innerHTML = `
         <div id="result">
-          <div id="image">
-            <img src="img/${img[count]}" alt="">
-          </div>
-          <h2>${txt[count]}</h2>
-        </div>`;
-  }
+                    <div id="image">
+                        <img src="img/${img[count]}" alt="">
+                    </div>
+                    <h2>${txt[count]}</h2>
+                </div>`
+              }
 }
+timeOut()
