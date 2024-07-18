@@ -5,74 +5,193 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Writing speed test</title>
         <style>
-            body{
+            @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Sevillana&display=swap');
+            .sevillana-regular {
+                font-family: "Sevillana", cursive;
+                font-weight: 400;
+                font-style: normal;
+            }
+
+            body {
+                background-color: #323437;
+            }
+            header{
+                padding: 30px 0 0 0 ;
+            }
+            header h1{
+                margin: auto;
+                max-width: 1300px;
+                color: #E2B714;
+                font-size: 2.5em;
+            }
+            #title-page{
+                font-size: 2.5em;
+                color: #ffffffd4;
+            }
+            main{
+                margin-top: 100 px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                height: 100vh;
+                flex-direction: column;
+                gap: 20px;
             }
-            #parent{
+            #parent {
+                width: 100% ;
+                height: 100%;
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
                 align-items: center;
             }
-            #stil{
-                width: 600px;
+            #block {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+            }
+            #stil {
+                display: flex;
+                justify-content: center;
+                width: 1000px;
                 height: 200px;
-                background-color: black;
-                border: 2px solid white;
                 overflow: hidden;
-                padding: 0 10px 0 10px;
+                padding: 0 10px;
                 transition: all .5s;
             }
-            #stil p{
-                color: white;
+            #stil p {
+                letter-spacing: 2;
+                font-size: 2em;
+                color: #646669;
+                display: inline-block;
+                position: relative;
+                font-family: monospace;
             }
             .move-animation {
-            animation-name: move;
-            animation-duration: 0.2s;
-            animation-direction: alternate;
-            animation-iteration-count: 1;
+                animation-name: move;
+                animation-duration: 0.2s;
+                animation-direction: alternate;
+                animation-iteration-count: 1;
             }
-
             @keyframes move {
-            0% {
-                transform: translateX(0);
+                0% {
+                    transform: translateX(0);
+                }
+                50% {
+                    transform: translateX(20px);
+                }
+                100% {
+                    transform: translateX(0);
+                }
             }
-            50% {
-                transform: translateX(20px);
-            }
-            100% {
-                transform: translateX(0);
-            }
-            }
-            #second{
+            .test-box {
+                font-size: 1.2em;
+                font-weight: 500;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
                 display: table;
-                padding: 30px;
-                background-color: #F6F6F7;
+                padding: 20px;
+                background-color: #E2B714;
                 border-radius: 20px;
                 border: 2px solid #333;
+                color: #646669;
             }
-            #true{
-                display: table;
-                padding: 30px;
-                background-color: #F6F6F7;
-                border-radius: 20px;
-                border: 2px solid #333;
+            #deyer::after {
+                content: '';
+                display: inline-block;
+                width: 1.5px;
+                height: 1em;
+                background-color: #E2B714;
+                position: absolute;
+                top: 0;
+                left: -2px;
+                animation: blink 1s steps(1, start) infinite;
             }
+            @keyframes blink {
+                0%, 100% {
+                    opacity: 1;
+                }
+                50% {
+                    opacity: 0;
+                }
+            }
+            #buttons{
+                display: flex;
+                gap: 10px;
+                width: 100%;
+                align-items: center;
+                justify-content: center;
+            }
+            .btn{
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             background: none;
+             border: 2px ridge  #E2B714;
+             width: 65px;
+             height: 40px;
+             border-radius: 10px;
+             color: #E2B714;   
+             cursor: pointer;
+            }
+            #reload{
+                cursor: pointer;
+                font-size: 1.2em;
+            }
+            .addBtn{
+                background-color: #E2B714;
+                border: 2px ridge #323437;
+                color: #646669;
+            }
+            #result{
+                height: 200px;
+                max-width: 500px;
+                align-items: center;
+                justify-content: space-between;
+                display: flex;
 
+            }
+            #result h2{
+                font-size: 1.5em;
+                color: #fff;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            }
+            #result img{
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+            }
+            #image{
+                width: 250px !important;
+            }
         </style>
-        <body>
-        
+    </head>
+    <body>
+        <header>
+            <h1 class="sevillana-regular">Writing speed test!</h1>
+        </header>
+        <main>
+            <div id="title-page">
+                <h2 class="sevillana-regular">Test your typing skills</h2>
+            </div>
+            <div id="buttons">
+                <button class="btn addBtn" id="timemicsec">15 sec</button>
+                <button class="btn" id="timesec">30 sec</button>
+                <button class="btn" id="timemin">60 sec</button>
+                <button id="reload" style="padding: 9px 10px;" class="btn" onclick="location.reload()">🗘</button>
+            </div>
             <div id="parent">
-                <p id="second"></p>
-            <div id="stil">
-                <p id="deyer"></p>
+                <p class="test-box" id="second"></p>
+                <div id="block">
+                    <div id="stil">
+                        <p id="deyer"></p>
+                    </div>
+                </div>
+                <p class="test-box" id="true">Correct words: 0</p>
             </div>
-            <p id="true"></p>
-            </div>
-          
+        </main>
+        
+        <div>
+            
+        </div>
         <script src="script.js"></script>
     </body>
 </html>
