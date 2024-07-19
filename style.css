@@ -136,6 +136,7 @@
                 color: #646669;
             }
             #result{
+                gap: 20px;
                 height: 200px;
                 max-width: 500px;
                 align-items: center;
@@ -149,6 +150,7 @@
                 font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
             }
             #result img{
+                border-radius: 10px;
                 width: 100%;
                 height: 200px;
                 object-fit: cover;
