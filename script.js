@@ -7,8 +7,8 @@ fetch("https://raw.githubusercontent.com/IbrahimHasanzada/StarbucksGiftCard_json
     console.error('Error fetching data:', error);
   });
 
-let img = ["turtle-preview.png", "rabbit-preview.png", "99-comet-800x600.gif"]
-let txt = ["You're typing at the leisurely pace of a snail.", "You're typing with the speed and agility of a rabbit!", "You're as swift as a comet blazing through the night sky."]
+const img = ["turtle-preview.png", "rabbit-preview.png", "99-comet-800x600.gif"]
+const txt = ["You're typing at the leisurely pace of a snail.", "You're typing with the speed and agility of a rabbit!", "You're as swift as a comet blazing through the night sky."]
 
 const deyer = document.querySelector("#deyer");
 const stil = document.getElementById("stil");
@@ -50,7 +50,7 @@ timeMin.onclick = () => {
     time = 60;
     second.innerHTML = time;
   }
-};
+}
 
 //  G E T   D A T A 
 function writeTest(arr) {
@@ -83,7 +83,6 @@ function checkFunction(e) {
   //  W R I T I N G   C O N T R O L  
   if (e.key === letter[0]) {
     (letter[0] === ' ') ? x++ : 
-
     (x <= 15) ? count = 0 : (x <= 30) ? count = 1 : count = 2
     trueWords.innerHTML = 'Correct words: ' + x
     letter = letter.substring(1);
