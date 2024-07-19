@@ -3,9 +3,6 @@ fetch("https://raw.githubusercontent.com/IbrahimHasanzada/StarbucksGiftCard_json
   .then(data => {
     writeTest(data);
   })
-  .catch(error => {
-    console.error('Error fetching data:', error);
-  });
 
 const img = ["turtle-preview.png", "rabbit-preview.png", "99-comet-800x600.gif"]
 const txt = ["You're typing at the leisurely pace of a snail.", "You're typing with the speed and agility of a rabbit!", "You're as swift as a comet blazing through the night sky."]
@@ -70,7 +67,7 @@ function shuffle(array) {
 
 //  C H E C K   P R E S S   K E Y S
 function checkFunction(e) {
-  // S T A R T   W R I T I N G   T E S T 
+// S T A R T   W R I T I N G   T E S T 
   if (!intervalStarted) {
     intervalStarted = true;
     interval = setInterval(() => {
